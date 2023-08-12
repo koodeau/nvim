@@ -4,7 +4,7 @@ vim.opt.writebackup = false
 
 -- Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
 -- delays and poor user experience
-vim.opt.updatetime = 300
+vim.opt.updatetime = 100
 
 -- Always show the signcolumn, otherwise it would shift the text each time
 -- diagnostics appeared/became resolved
@@ -97,6 +97,7 @@ vim.api.nvim_create_autocmd("User", {
 
 -- Apply codeAction to the selected region
 -- Example: `<leader>aap` for current paragraph
+---@diagnostic disable-next-line: redefined-local
 local opts = {silent = true, nowait = true}
 keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
 keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)

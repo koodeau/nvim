@@ -2,16 +2,6 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
---local comment = require("Comment").setup({
---  pre_hook = function()
---    return require("ts_context_commentstring.internal").calculate_commentstring()
---  end,
---  keymap = {
---    n = "<leader>/",
---    v = "<leader>/",
---  },
---})
-
 keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -35,9 +25,12 @@ keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- This is going to get me cancelled
 keymap.set("i", "<C-c>", "<Esc>")
 
+keymap.set("n", ":W", "<cmd>:w<CR>")
+
 keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-keymap.set("n", "<leader>ff", vim.lsp.buf.format)
+keymap.set("n", "<leader>ff", vim.lsp.buf.format, { silent = true })
+keymap.set("n", "<leader>pf", "<cmd>Prettier<CR>", { silent = true })
 
 keymap.set("i", "jk", "<Esc>")
 keymap.set("i", "jj", "<Esc>")
@@ -71,4 +64,3 @@ keymap.set("n", "<leader>sw", [[:%s/\s\+$//e<CR>]])
 keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
-

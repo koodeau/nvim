@@ -1,7 +1,22 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   -- ensure_installed = { "vimdoc", "javascript", "typescript", "c", "lua", "rust" },
-  ensure_installed = "all",
+  ensure_installed = {
+    "vimdoc",
+    "javascript",
+    "typescript",
+    "c",
+    "lua",
+    "rust",
+    "bash",
+    "css",
+    "html",
+    "json",
+    "jsonc",
+    "scss",
+    "yaml",
+    "svelte",
+  },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
@@ -11,7 +26,21 @@ require'nvim-treesitter.configs'.setup {
 
   highlight = {
     -- `false` will disable the whole extension
-    enable = true,
+    enable = {
+      "javascript",
+      "typescript",
+      "c",
+      "lua",
+      "rust",
+      "bash",
+      "css",
+      "html",
+      "json",
+      "jsonc",
+      "scss",
+      "yaml",
+      "svelte",
+    },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -43,7 +72,7 @@ vim.NERDTreeMinimalUI = 1
 vim.NERDTreeDirArrowExpandable = '▸'
 vim.NERDTreeDirArrowCollapsible = '▾'
 vim.NERDTreeGitStatusUseNerdFonts = 1
-vim.NERDTreeIgnore = { 'node_modules', '.DS_Store' }
+vim.NERDTreeIgnore = { 'node_modules', '.DS_Store', ".git" }
 
 vim.g.NERDSpaceDelims = 1
 vim.g.NERDCompactSexyComs = 1

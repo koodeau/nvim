@@ -64,7 +64,7 @@ return require('packer').startup(function(use)
           args = {}
         },
         view = {
-          width = 20,
+          width = 25,
           side = 'left',
           mappings = {
             custom_only = false,
@@ -75,12 +75,6 @@ return require('packer').startup(function(use)
     end
   })
 
-use 'noib3/cokeline.nvim'
-require("cokeline").setup()
-
-use "terrortylor/nvim-comment"
-require('nvim_comment').setup()
-
   use({
     'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -90,7 +84,7 @@ require('nvim_comment').setup()
           numbers = 'ordinal',
           diagnostics = 'nvim_lsp',
           diagnostics_indicator = function(count, level, diagnostics_dict, context)
-            return "(" .. count .. context .. diagnostics_dict[level] ..")"
+            return "(" .. count .. context .. diagnostics_dict[level] .. ")"
           end,
           show_buffer_close_icons = false,
           show_close_icon = false,
@@ -104,7 +98,7 @@ require('nvim_comment').setup()
   })
 
   use({
-    "numToStr/Comment.nvim",
+    'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end
@@ -114,19 +108,18 @@ require('nvim_comment').setup()
   -- Also run code after load (see the "config" key)
   use {
     'w0rp/ale',
-    ft = { 'sh', 'zsh', 'bash', 'cmake', 'html', 'markdown', 'vim', 'lua', 'python', 'rust',
-      'javascript', 'typescript', 'json', 'yaml', 'toml', 'dockerfile', 'go', 'ruby',
-      'postcss', 'sql', 'css', 'scss', 'less', 'sass', 'graphql', 'vue', 'svelte', 'swift',
-      'objective-c' },
+    ft = { 'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'lua', 'rust',
+      'javascript', 'typescript', 'json', 'yaml', 'toml', 'dockerfile', 'go',
+      'postcss', 'sql', 'css', 'scss', 'less', 'sass', 'graphql', 'svelte' },
     cmd = 'ALEEnable',
     config = 'vim.cmd[[ALEEnable]]'
   }
 
   use({
-    "folke/trouble.nvim",
+    'folke/trouble.nvim',
     config = function()
-      require("trouble").setup {
-        icons = false,
+      require('trouble').setup {
+        icons = true,
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
@@ -140,16 +133,16 @@ require('nvim_comment').setup()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
     end, }
-  use("nvim-treesitter/playground")
-  use("theprimeagen/harpoon")
-  use("theprimeagen/refactoring.nvim")
-  use("mbbill/undotree")
-  use("tpope/vim-fugitive")
-  use("nvim-treesitter/nvim-treesitter-context")
-  use("nvim-treesitter/nvim-treesitter-refactor")
-  use("preservim/nerdtree")
-  use("ryanoasis/vim-devicons")
-  use("Xuyuanp/nerdtree-git-plugin")
+  use('nvim-treesitter/playground')
+  use('theprimeagen/harpoon')
+  use('theprimeagen/refactoring.nvim')
+  use('mbbill/undotree')
+  use('tpope/vim-fugitive')
+  use('nvim-treesitter/nvim-treesitter-context')
+  use('nvim-treesitter/nvim-treesitter-refactor')
+  use('preservim/nerdtree')
+  use('ryanoasis/vim-devicons')
+  use('Xuyuanp/nerdtree-git-plugin')
 
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -174,23 +167,27 @@ require('nvim_comment').setup()
     }
   }
 
-  -- use("")
-  use("easymotion/vim-easymotion")
-  use {
-    "neoclide/coc.nvim",
-    -- branch = "release",
-    run = "yarn install --frozen-lockfile",
-  }
-  use("coc-extensions/coc-svelte")
-  use("leafOfTree/vim-svelte-plugin")
-  use {
-    "prettier/vim-prettier",
-    run = "pnpm install",
-  }
-  use("Shougo/context_filetype.vim")
+  use('nvim-lua/popup.nvim')
+  use('nvim-lua/plenary.nvim')
+  use('itchyny/lightline.vim')
 
-  use("folke/zen-mode.nvim")
-  use("github/copilot.vim")
-  use("eandrju/cellular-automaton.nvim")
-  use("laytan/cloak.nvim")
+  -- use("")
+  use('easymotion/vim-easymotion')
+  use {
+    'neoclide/coc.nvim',
+    -- branch = "release",
+    run = 'yarn install --frozen-lockfile',
+  }
+  use('coc-extensions/coc-svelte')
+  use('leafOfTree/vim-svelte-plugin')
+  use {
+    'prettier/vim-prettier',
+    run = 'pnpm install',
+  }
+  use('Shougo/context_filetype.vim')
+
+  use('folke/zen-mode.nvim')
+  use('github/copilot.vim')
+  use('eandrju/cellular-automaton.nvim')
+  use('laytan/cloak.nvim')
 end)

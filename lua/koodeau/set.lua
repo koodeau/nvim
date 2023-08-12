@@ -1,6 +1,5 @@
 vim.opt.guicursor = ""
 
-vim.opt.signcolumn = "yes"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
@@ -11,12 +10,11 @@ vim.opt.rnu = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 
-vim.opt.mouse = "a"
+-- vim.opt.mouse = "a"
 vim.opt.clipboard:append("unnamedplus")
-vim.opt.number = true
 
 vim.opt.cursorline = true
--- vim.opt.prompt = true
+vim.opt.prompt = true
 
 vim.opt.showmode = true
 
@@ -49,14 +47,9 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
-
 vim.opt.colorcolumn = "80"
-
-vim.opt.expandtab = true
 
 vim.filetype.on = true
 vim.filetype.plugin = true
@@ -73,30 +66,6 @@ vim.opt.sidescroll = 1
 vim.opt.backspace = "indent,eol,start"
 
 vim.opt.iskeyword:append("-")
-
-vim.NERDTreeIndicatorMapCustom = {
-  Modified = "✹",
-  Staged = "✚",
-  Untracked = "✭",
-  Renamed = "➜",
-  Unmerged = "═",
-  Deleted = "✖",
-  Dirty = "✗",
-  Ignored = "☒",
-  Clean = "✔︎",
-  Unknown = "?"
-}
-
-vim.NERDTreeShowHidden = 1
-vim.NERDTreeShowBookmarks = 0
-vim.NERDTreeHighlightCursorline = 1
-
-vim.NERDTreeMinimalUI = 1
-
-vim.NERDTreeDirArrowExpandable = '▸'
-vim.NERDTreeDirArrowCollapsible = '▾'
-vim.NERDTreeGitStatusUseNerdFonts = 1
-vim.NERDTreeIgnore = { 'node_modules', '.DS_Store' }
 
 vim.g.nvim_tree_icons = {
   default = '',
@@ -139,5 +108,59 @@ vim.g.emph_idents = 0
 vim.g.match_paren_style = 1
 vim.g.dim_punctuation = 1
 
+vim.g.ale_lint_delay = 0
+vim.g.ale_lint_on_text_changed = "never"
+
+vim.g.ale_linters = {
+  javascript = { "eslint" },
+  typescript = { "eslint" },
+  html = { "tidy" },
+  css = { "stylelint" },
+  svelte = { "eslint" },
+  scss = { "stylelint" },
+  sass = { "stylelint" },
+  less = { "stylelint" },
+  postcss = { "stylelint" },
+  json = { "jsonlint" },
+  yaml = { "yamllint" },
+  markdown = { "markdownlint" },
+  python = { "flake8" },
+  lua = { "luacheck" },
+  go = { "golint" },
+  rust = { "rustc" },
+  php = { "phpcs" },
+  ruby = { "rubocop" },
+  sh = { "shellcheck" },
+  swift = { "swiftlint" },
+}
+
+vim.g.ale_fixers = {
+  javascript = { "eslint" },
+  typescript = { "eslint" },
+  html = { "tidy" },
+  css = { "stylelint" },
+  scss = { "stylelint" },
+  sass = { "stylelint" },
+  less = { "stylelint" },
+  postcss = { "stylelint" },
+  svelte = { "eslint" },
+  json = { "prettier" },
+  yaml = { "prettier" },
+  markdown = { "prettier" },
+  lua = { "luafmt" },
+  go = { "gofmt" },
+  rust = { "rustfmt" },
+  ruby = { "rubocop" },
+  sh = { "shfmt" },
+  swift = { "swiftformat" },
+}
+
+vim.laststatus = 2
+
+vim.g.ale_completion_enabled = 0
+vim.g.ale_completion_autoimport = 0
+
+vim.g.noshowmode = false
+
 vim.clipboard = "unnamedplus"
-vim.title = true
+vim.opt.title = true
