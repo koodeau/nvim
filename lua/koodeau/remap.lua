@@ -25,12 +25,9 @@ keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- This is going to get me cancelled
 keymap.set("i", "<C-c>", "<Esc>")
 
-keymap.set("n", ":W", "<cmd>:w<CR>")
-
 keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 keymap.set("n", "<leader>ff", vim.lsp.buf.format, { silent = true })
-keymap.set("n", "<leader>pf", "<cmd>Prettier<CR>", { silent = true })
 
 keymap.set("i", "jk", "<Esc>")
 keymap.set("i", "jj", "<Esc>")
@@ -43,11 +40,6 @@ keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
---keymap.set("n", "<C-h>", "<C-w>h")
---keymap.set("n", "<C-j>", "<C-w>j")
---keymap.set("n", "<C-k>", "<C-w>k")
---keymap.set("n", "<C-l>", "<C-w>l")
 
 keymap.set("n", "<leader>pl", "<C-w>v<C-w><Right>")
 keymap.set("n", "<leader>pj", "<C-w>v<C-w><Down>")

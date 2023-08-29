@@ -10,7 +10,7 @@ vim.opt.rnu = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 
--- vim.opt.mouse = "a"
+vim.opt.mouse = "a"
 vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.cursorline = true

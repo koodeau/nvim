@@ -51,7 +51,6 @@ ft.set("typescript", { "//%s", "/*%s*/" })
 ft.set("html", "<!--%s-->")
 ft.set("css", "/*%s*/")
 ft.set("scss", { "//%s", "/*%s*/" })
-ft.set("svelte", "//%s")
 
 ft.lua = "--%s"
 ft.yaml = "#%s"
@@ -60,4 +59,3 @@ ft.typescript = { "//%s", "/*%s*/" }
 ft.html = "<!--%s-->"
 ft.css = "/*%s*/"
 ft.scss = { "//%s", "/*%s*/" }
-ft.svelte = "//%s"
