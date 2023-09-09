@@ -36,16 +36,16 @@ autocmd('TextYankPost', {
 
 -- Diagnostic signs
 -- https://github.com/folke/trouble.nvim/issues/52
-local signs = {
-  Error = " ",
-  Warning = " ",
-  Hint = " ",
-  Information = " "
-}
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
+-- local signs = {
+--   Error = " ",
+--   Warning = " ",
+--   Hint = " ",
+--   Information = " "
+-- }
+-- for type, icon in pairs(signs) do
+--   local hl = "DiagnosticSign" .. type
+--   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- end
+--
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

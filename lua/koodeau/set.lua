@@ -55,8 +55,6 @@ vim.filetype.on = true
 vim.filetype.plugin = true
 vim.filetype.indent = true
 
-vim.opt.lazyredraw = true
-
 vim.opt.history = 999
 vim.opt.undolevels = 999
 

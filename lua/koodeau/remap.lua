@@ -56,3 +56,6 @@ keymap.set("n", "<leader>sw", [[:%s/\s\+$//e<CR>]])
 keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
+
+-- Noice
+keymap.set("n", "<leader>nn", ":NoiceDismiss<CR>", {noremap=true})

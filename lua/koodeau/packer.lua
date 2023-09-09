@@ -19,17 +19,17 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'tpope/vim-unimpaired'
-
+  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'xiyaowong/nvim-transparent'
 
-  use({
-    "rcarriga/nvim-notify",
-    config = function()
-      require("notify").setup({
-        background_colour = "#000000" -- "#2f3037",
-      })
-    end
-  })
+  -- use({
+  --   "rcarriga/nvim-notify",
+  --   config = function()
+  --     require("notify").setup({
+  --       background_colour = "#000000" -- "#2f3037",
+  --     })
+  --   end
+  -- })
 
   use({
     "folke/noice.nvim",
@@ -39,7 +39,7 @@ return require('packer').startup(function(use)
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
+      -- "rcarriga/nvim-notify",
     },
     config = function()
       require("noice").setup({
@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
     end
   })
 
-    use {
+  use {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
     -- tag = '0.1.0',
     -- or                            , branch = '0.1.x',
@@ -125,17 +125,17 @@ return require('packer').startup(function(use)
     config = function()
       require('bufferline').setup({
         options = {
-          numbers = 'ordinal',
-          diagnostics = 'nvim_lsp',
-          diagnostics_indicator = function(count, level, diagnostics_dict, context)
-            return "(" .. count .. context .. diagnostics_dict[level] .. ")"
-          end,
+          -- numbers = 'ordinal',
+          -- diagnostics = 'nvim_lsp',
+          -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+          --   return "(" .. count .. context .. diagnostics_dict[level] .. ")"
+          -- end,
           show_buffer_close_icons = false,
           show_close_icon = false,
           show_tab_indicators = true,
           separator_style = 'thin',
           always_show_bufferline = false,
-          sort_by = 'id',
+          -- sort_by = 'id',
         }
       })
     end
@@ -253,51 +253,42 @@ return require('packer').startup(function(use)
     end
   })
 
+  -- use({
+  --   'rmagatti/goto-preview',
+  --   config = function()
+  --     require('goto-preview').setup {
+  --       width = 120, -- Width of the floating window
+  --       height = 15, -- Height of the floating window
+  --       border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Border characters of the floating window
+  --       default_mappings = true,
+  --       debug = false, -- Print debug information
+  --       opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
+  --       resizing_mappings = false, -- Binds arrow keys to resizing the floating window.
+  --       post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
+  --       references = { -- Configure the telescope UI for slowing the references cycling window.
+  --         telescope = require("telescope.themes").get_dropdown({ hide_preview = false })
+  --       },
+  --       -- These two configs can also be passed down to the goto-preview definition and implementation calls for one off "peak" functionality.
+  --       focus_on_open = true,                                        -- Focus the floating window when opening it.
+  --       dismiss_on_move = false,                                     -- Dismiss the floating window when moving the cursor.
+  --       force_close = true,                                          -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
+  --       bufhidden = "wipe",                                          -- the bufhidden option to set on the floating window. See :h bufhidden
+  --       stack_floating_preview_windows = true,                       -- Whether to nest floating windows
+  --       preview_window_title = { enable = true, position = "left" }, -- Whether
+  --     }
+  --   end
+  -- })
+
   use({
-    'rmagatti/goto-preview',
+    "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require('goto-preview').setup {
-        width = 120, -- Width of the floating window
-        height = 15, -- Height of the floating window
-        border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Border characters of the floating window
-        default_mappings = true,
-        debug = false, -- Print debug information
-        opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
-        resizing_mappings = false, -- Binds arrow keys to resizing the floating window.
-        post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
-        references = { -- Configure the telescope UI for slowing the references cycling window.
-          telescope = require("telescope.themes").get_dropdown({ hide_preview = false })
-        },
-        -- These two configs can also be passed down to the goto-preview definition and implementation calls for one off "peak" functionality.
-        focus_on_open = true,                                        -- Focus the floating window when opening it.
-        dismiss_on_move = false,                                     -- Dismiss the floating window when moving the cursor.
-        force_close = true,                                          -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
-        bufhidden = "wipe",                                          -- the bufhidden option to set on the floating window. See :h bufhidden
-        stack_floating_preview_windows = true,                       -- Whether to nest floating windows
-        preview_window_title = { enable = true, position = "left" }, -- Whether
+      require('indent_blankline').setup {
+        -- char = '┊',
+        char = "",
+        show_trailing_blankline_indent = false,
       }
     end
   })
-
-  use({
-    "folke/todo-comments.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("todo-comments").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  })
-
-  -- require('indent_blankline').setup {
-  --   char = '┊',
-  --  show_trailing_blankline_indent = false,
-  -- }
-
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
 
   use({
     "folke/twilight.nvim",
@@ -307,4 +298,4 @@ return require('packer').startup(function(use)
       -- refer to the configuration section below
     }
   })
-  end)
+end)
