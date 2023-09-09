@@ -164,6 +164,4 @@ vim.g.noshowmode = false
 
 vim.clipboard = "unnamedplus"
 vim.opt.title = true
--- vim.g.nolazyredraw = true
--- vim.g.lazyredraw = "off"
 vim.opt.lazyredraw = false
