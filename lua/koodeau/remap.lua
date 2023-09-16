@@ -58,4 +58,4 @@ keymap.set("n", "<leader><leader>", function()
 end)
 
 -- Noice
-keymap.set("n", "<leader>nn", ":NoiceDismiss<CR>", {noremap=true})
+-- keymap.set("n", "<leader>nn", ":NoiceDismiss<CR>", {noremap=true})
