@@ -8,6 +8,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'kyazdani42/nvim-web-devicons'
+  use "lukas-reineke/indent-blankline.nvim"
 
   require('nvim-treesitter.configs').setup({
     context_commentstring = {
@@ -22,14 +24,14 @@ return require('packer').startup(function(use)
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'xiyaowong/nvim-transparent'
 
-  use({
-    "rcarriga/nvim-notify",
-    config = function()
-      require("notify").setup({
-        background_colour = "#000000" -- "#2f3037",
-      })
-    end
-  })
+  -- use({
+  --   "rcarriga/nvim-notify",
+  --   config = function()
+  --     require("notify").setup({
+  --       background_colour = "#000000" -- "#2f3037",
+  --     })
+  --   end
+  -- })
 
   use({
     "folke/noice.nvim",
@@ -39,7 +41,7 @@ return require('packer').startup(function(use)
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
+      -- "rcarriga/nvim-notify",
     },
     config = function()
       require("noice").setup({
@@ -60,9 +62,9 @@ return require('packer').startup(function(use)
         --   lsp_doc_border = true,        -- add a border to hover docs and signature help
         -- },
         cmdline = {
-          enabled = true,   -- enables the Noice cmdline UI
+          enabled = true,         -- enables the Noice cmdline UI
           view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-          opts = {},        -- global options for the cmdline. See section on views
+          opts = {},              -- global options for the cmdline. See section on views
           format = {
             -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
             -- view: (default is cmdline view)
@@ -82,15 +84,15 @@ return require('packer').startup(function(use)
         messages = {
           -- NOTE: If you enable messages, then the cmdline is enabled automatically.
           -- This is a current Neovim limitation.
-          enabled = true,        -- enables the Noice messages UI
-          view = "notify",       -- default view for messages
-          view_error = "notify", -- view for errors
-          view_warn = "notify",  -- view for warnings
-          view_history = "messages", -- view for :messages
+          enabled = false,             -- enables the Noice messages UI
+          view = "notify",             -- default view for messages
+          view_error = "notify",       -- view for errors
+          view_warn = "notify",        -- view for warnings
+          view_history = "messages",   -- view for :messages
           view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
         },
         popupmenu = {
-          enabled = true, -- enables the Noice popupmenu UI
+          enabled = true,  -- enables the Noice popupmenu UI
           ---@type 'nui'|'cmp'
           backend = "nui", -- backend to use to show regular cmdline completions
           -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
@@ -98,10 +100,10 @@ return require('packer').startup(function(use)
         },
         -- default options for require('noice').redirect
         -- see the section on Command Redirection
-        redirect = {
-          view = "popup",
-          filter = { event = "msg_show" },
-        },
+        -- redirect = {
+        --   view = "popup",
+        --   filter = { event = "msg_show" },
+        -- },
         -- You can add any custom commands below that will be available with `:Noice command`
         commands = {
           history = {
@@ -169,14 +171,14 @@ return require('packer').startup(function(use)
             -- override the lsp markdown formatter with Noice
             ["vim.lsp.util.stylize_markdown"] = false,
             -- override cmp documentation with Noice (needs the other options to work)
-            ["cmp.entry.get_documentation"] = false,
+            ["cmp.entry.get_documentation"] = true,
 
           },
           hover = {
             enabled = true,
             silent = true, -- set to true to not show a message if hover is not available
-            view = nil, -- when nil, use defaults from documentation
-            opts = {}, -- merged with defaults from documentation
+            view = nil,    -- when nil, use defaults from documentation
+            opts = {},     -- merged with defaults from documentation
           },
           signature = {
             enabled = true,
@@ -184,10 +186,10 @@ return require('packer').startup(function(use)
               enabled = true,
               trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
               luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-              throttle = 50, -- Debounce lsp signature help request by 50ms
+              throttle = 50,  -- Debounce lsp signature help request by 50ms
             },
-            view = nil, -- when nil, use defaults from documentation
-            opts = {},  -- merged with defaults from documentation
+            view = nil,       -- when nil, use defaults from documentation
+            opts = {},        -- merged with defaults from documentation
           },
           message = {
             -- Messages shown by lsp servers
@@ -209,7 +211,7 @@ return require('packer').startup(function(use)
         },
         markdown = {
           hover = {
-            ["|(%S-)|"] = vim.cmd.help,                 -- vim help links
+            ["|(%S-)|"] = vim.cmd.help,                       -- vim help links
             ["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
           },
           highlights = {
@@ -233,17 +235,17 @@ return require('packer').startup(function(use)
         presets = {
           -- you can enable a preset by setting it to true, or a table that will override the preset config
           -- you can also add custom presets that you can enable/disable with enabled=true
-          bottom_search = false,   -- use a classic bottom cmdline for search
-          command_palette = false, -- position the cmdline and popupmenu together
+          bottom_search = false,         -- use a classic bottom cmdline for search
+          command_palette = false,       -- position the cmdline and popupmenu together
           long_message_to_split = false, -- long messages will be sent to a split
-          inc_rename = false,      -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false,  -- add a border to hover docs and signature help
+          inc_rename = false,            -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,        -- add a border to hover docs and signature help
         },
-        throttle = 1000 / 30,      -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+        throttle = 1000 / 30,            -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
         views = {}, ---@see section on views
-        routes = {}, --- @see section on routes
-        status = {}, --- @see section on statusline components
-        format = {}, --- @see section on formatting
+        routes = {},                     --- @see section on routes
+        status = {},                     --- @see section on statusline components
+        format = {},                     --- @see section on formatting
         -- add any options here
         -- routes = {
         --   {
@@ -316,27 +318,27 @@ return require('packer').startup(function(use)
 
   -- use 'nvim-lualine/lualine.nvim'
 
-  use({
-    'akinsho/nvim-bufferline.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require('bufferline').setup({
-        options = {
-          -- numbers = 'ordinal',
-          -- diagnostics = 'nvim_lsp',
-          -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
-          --   return "(" .. count .. context .. diagnostics_dict[level] .. ")"
-          -- end,
-          show_buffer_close_icons = false,
-          show_close_icon = false,
-          show_tab_indicators = true,
-          separator_style = 'thin',
-          always_show_bufferline = false,
-          -- sort_by = 'id',
-        }
-      })
-    end
-  })
+  -- use({
+  --   'akinsho/nvim-bufferline.lua',
+  --   requires = 'kyazdani42/nvim-web-devicons',
+  --   config = function()
+  --     require('bufferline').setup({
+  --       options = {
+  --         -- numbers = 'ordinal',
+  --         -- diagnostics = 'nvim_lsp',
+  --         -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+  --         --   return "(" .. count .. context .. diagnostics_dict[level] .. ")"
+  --         -- end,
+  --         show_buffer_close_icons = false,
+  --         show_close_icon = false,
+  --         show_tab_indicators = false,
+  --         separator_style = 'thin',
+  --         always_show_bufferline = false,
+  --         -- sort_by = 'id',
+  --       }
+  --     })
+  --   end
+  -- })
 
   use({
     'numToStr/Comment.nvim',
@@ -475,17 +477,6 @@ return require('packer').startup(function(use)
   --     }
   --   end
   -- })
-
-  use({
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require('indent_blankline').setup {
-        -- char = '┊',
-        char = "",
-        show_trailing_blankline_indent = false,
-      }
-    end
-  })
 
   use({
     "folke/twilight.nvim",
